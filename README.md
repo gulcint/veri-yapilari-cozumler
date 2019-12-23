@@ -1,2 +1,3 @@
 # veri-yapilari-cozumler
-Soru Cozumleri
+
+Sorular daha sonra eklenecektir.
