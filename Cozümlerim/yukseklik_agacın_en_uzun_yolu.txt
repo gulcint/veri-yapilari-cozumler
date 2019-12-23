@@ -1,0 +1,27 @@
+
+	IKILI ARAMA AGACI : 
+	
+	AGACIN YUKSEKLİGİNİ HESAPLAYAN FONK :
+	
+	int yukseklik(struct dugum *kok){
+	
+		if(kok == NULL){
+		return 0 ;
+		}
+		
+		else {
+			
+			int left_H, right_H;
+			
+			left_H = yukseklik(kok->sol);
+			right_H = yukseklik(kok->sag);
+			
+			if(right_H > left_H){
+				return right_H +1 ;
+			}
+			else {
+				return left_H +1 ;
+			}	
+		}
+	
+	}

@@ -1,0 +1,61 @@
+
+	BINARY TREE
+	
+	DUGUM BUL
+	
+	struct dugum* dugum_bul(struct dugum *kok , int icerik){
+
+		if(kok !=NULL){
+			if(kok->icerik == icerik)
+				return kok;
+			else if (kok->icerik > icerik)
+				dugum_bul(kok->sol,icerik);
+			else
+				dugum_bul(kok->sag,icerik);
+		}
+		else
+			return NULL;
+	}
+	
+	
+	MINIMUM ELEMANI BUL
+	
+	int minValue(struct dugum *kok){
+		if(kok==NULL)
+			return SENTINEL;
+		while(kok->sol!=NULL){
+			kok=kok->sol;
+		}
+		return kok->icerik;
+
+	}
+	
+	MAXIMUM ELEMAN BUL
+	
+	int maxValue(struct dugum *kok){
+
+	if(kok == NULL)
+		return SENTINEL;
+	while(kok->sag !=NULL){
+		kok=kok->sag;
+	}
+		return kok->icerik;
+	}
+	
+	BINARY TREE Mİ 
+	
+	boolean binary_agac_mi (struct dugum *kok){
+		
+		if(kok == NULL){
+			return true;
+		}
+		
+		if(kok->sol !=NULL && maxValue(kok->sol) > kok->icerik )
+			return false;
+		if (kok->sag !=NULL && minValue(kok->sag) < kok->icerik)
+			return false;
+		else return true;
+		
+	}
+	
+	

@@ -1,0 +1,24 @@
+	Veri yapıları iki liste siralı mı ?
+
+	int liste_sirali_mi(struct hucre *liste_basi){
+
+		if(liste_basi==NULL ||liste_basi->sonraki==NULL){
+			printf("Listede en az 2 adet eleman bulunmalıdır.\n");
+			exit(1);
+		}
+		
+		struct hucre *b,*d ;
+		d=liste_basi;
+		b=liste_basi;
+		while(b->sonraki!=NULL){
+			while(d!=NULL){
+				if(b->icerik > d->icerik){
+					return 0;
+				}
+			d=d->sonraki;
+			}
+			b=b->sonraki;
+
+		}
+		return 1;
+	}

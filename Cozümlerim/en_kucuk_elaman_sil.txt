@@ -1,0 +1,37 @@
+
+	TEK YONLU BAGLI LİSTE
+	EN KUCUK ELEMANI BUL VE SİL
+
+
+	void en_kucuk_sil(struct hucre **liste_basi){
+		struct hucre *d = *liste_basi;
+		struct hucre *once;
+		int enkucuk;
+
+		if(*liste_basi==NULL){
+			printf("Liste de eleman yoktur.\n");
+			return;
+		}
+		enkucuk = SENTINEL;
+
+		while(d->sonraki!=NULL){
+			if(d->icerik < enkucuk){
+				enkucuk=d->icerik;
+			}
+			d=d->sonraki;
+		}
+
+		d=*liste_basi;
+		while(d->sonraki!=NULL && d->icerik!=enkucuk){
+			once = d;
+			d=d->sonraki;
+		}
+		if(d==*liste_basi){
+			*liste_basi=(*liste_basi)->sonraki;
+			free(d);
+			return;
+		}
+		once->sonraki = d->sonraki;
+		free(d);
+		return;
+	}

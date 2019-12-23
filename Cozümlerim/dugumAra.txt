@@ -1,0 +1,27 @@
+	
+	
+	int dugum_ara(int icerik,struct ikili_arama_agaci *agac){
+
+		struct dugum *d;
+		struct dugum *geri;
+
+		d=agac->kok;
+
+		if(d==NULL){
+				printf("Liste de eleman yoktur.\n");
+				exit(1);
+		}
+
+		while(d!=NULL){
+			geri=d;
+			printf("dugum icerik : %4d\n",d->icerik);
+			if(icerik == d->icerik){
+				printf("Deger bulundu.\n");
+				return 1 ;
+			}
+			else if (icerik < d->icerik) d=d->sol;
+			else d = d->sag;
+		}
+		printf("Bulunamadı.\n");
+		return 0;
+	}

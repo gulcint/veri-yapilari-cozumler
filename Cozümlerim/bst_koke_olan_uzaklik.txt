@@ -1,0 +1,71 @@
+	
+	
+	BINARY TREE KOKE OLAN UZAKLIK DUGUM İLE
+	
+	
+	int koke_uzaklik(struct dugum *kok,struct dugum *a ){
+		struct dugum *d=kok;
+	
+		int sayac=0;
+
+		while(d!=NULL){
+			if(d->icerik < a->icerik){
+				d=d->sag;
+				sayac++;
+			}
+			else if(d->icerik > a->icerik){
+				d=d->sol;
+				sayac++;
+			}
+			if(d->icerik == a->icerik){
+				return sayac;
+			}
+		}
+	}
+	
+	
+	
+	int koke_uzaklik_rakam(struct dugum *kok,int icerik){
+		struct dugum *d=kok;
+		int sayac=0;
+
+		while(d!=NULL){
+			if(d->icerik < icerik){
+				d=d->sag;
+				sayac++;
+			}
+			else if(d->icerik > icerik){
+				d=d->sol;
+				sayac++;
+			}
+			if(d->icerik == icerik){
+				return sayac;
+			}
+		}
+	}
+
+
+	TEK CİFT DUGUM SAYİSİ 
+	
+	void cift_tek_say(struct hucre *liste_basi, int cift_sayisi, int tek_sayisi){
+		struct hucre *d = liste_basi;
+
+		if(liste_basi == NULL){
+			cift_sayisi = 0;
+			tek_sayisi  = 0;
+		}
+		else{
+			while(d!=NULL){
+				if(d->icerik %2 ==0){
+					cift_sayisi++;
+				}
+				else{
+					tek_sayisi++;
+				}
+			 d=d->sonraki;
+			}
+		}
+		printf("\nCift Sayisi %4d: , Tek Sayisi : %4d\n",cift_sayisi,tek_sayisi);
+	}
+
+
