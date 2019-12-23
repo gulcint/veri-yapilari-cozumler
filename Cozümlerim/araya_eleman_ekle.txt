@@ -5,49 +5,47 @@
 	
 	void araya_eleman_ekle (int icerik, int indis, struct ciftYonluListe *liste){
 
-    struct ciftYonluEleman *bas = liste->bas;
-    struct ciftYonluEleman *once ;
-    struct ciftYonluEleman  *eleman = elemanOlustur(icerik);
+	    struct ciftYonluEleman *bas = liste->bas;
+	    struct ciftYonluEleman *once ;
+	    struct ciftYonluEleman  *eleman = elemanOlustur(icerik);
 
-    int sayac = 0;
+	    int sayac = 0;
 
-    if(bas==NULL){
-        liste->bas=eleman;
-        eleman->geri=liste->bas;
+	    if(bas==NULL){
+		liste->bas=eleman;
+		eleman->geri=liste->bas;
 
-        liste->bas =eleman;
-    }
+		liste->bas =eleman;
+	    }
 
-    while(bas != NULL && sayac !=indis){
-        once = bas;
-        bas = bas->ileri;
-        sayac++;
-    }
+	    while(bas != NULL && sayac !=indis){
+		once = bas;
+		bas = bas->ileri;
+		sayac++;
+	    }
 
+	    once->ileri = eleman;
+	    eleman->geri = once;
+	    bas->geri = eleman;
+	    eleman->ileri=bas;
+	    return;
+	}
 
+	-----------------------------------------------------------------------------
 
-    once->ileri = eleman;
-    eleman->geri = once;
-    bas->geri = eleman;
-    eleman->ileri=bas;
-    return;
-}
+	int liste_varmi(struct ciftYonluListe *liste, struct ciftYonluEleman *member){
 
-------------------------------------------------------
+	    struct ciftYonluEleman *bas = liste->bas;
 
-int liste_varmi(struct ciftYonluListe *liste, struct ciftYonluEleman *member){
-
-    struct ciftYonluEleman *bas = liste->bas;
-
-    while(bas!=NULL && bas->icerik !=member->icerik){
-            bas = bas->ileri;
-    }
-    if(bas->icerik == member->icerik){
-        printf("Liste de vardir.\n ");
-        return 1 ;
-    }
-    else {
-        printf("Liste de yoktur.\n");
-        return 0 ;
-    }
-}
+	    while(bas!=NULL && bas->icerik !=member->icerik){
+		    bas = bas->ileri;
+	    }
+	    if(bas->icerik == member->icerik){
+		printf("Liste de vardir.\n ");
+		return 1 ;
+	    }
+	    else {
+		printf("Liste de yoktur.\n");
+		return 0 ;
+	    }
+	}
