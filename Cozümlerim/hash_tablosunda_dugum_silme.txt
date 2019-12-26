@@ -1,0 +1,28 @@
+	
+	HASH TABLOSUNDAN ELEMAN SİLME
+	
+	sil(struct hash_tablosu *hash_table , char *anahtar){
+		
+		int index;
+		index=hash(anahtar,hash_table->multiplier, hash_table->tablo_uzunlugu);
+		
+		struct CELL *liste_basi = (hash_table->tablo_basi+index)->header;
+		struct CELL *simdiki = liste_basi;
+		struct CELL *onceki;
+		
+		while(simdiki!= NULL && strcmp(anahtar,simdiki->anahtar)){
+			onceki = simdiki;
+			simdiki =simdiki->next;
+		}
+		
+		if(simdiki==NULL) return ;
+		if(simdiki==liste_basi){
+			liste_basi=liste_basi->next;
+		}
+		else{
+			onceki->next = simdiki->next;
+		}
+		free(simdiki->anahtar);
+		free(simdiki);
+	
+	}
