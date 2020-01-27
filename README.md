@@ -1,3 +1,3 @@
 # veri-yapilari-cozumler
 
-Sorular daha sonra eklenecektir.
+Veri yapıları vize, final soruları ve benzerlerinin çözümleri bulunmaktadır.
